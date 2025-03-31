@@ -1,4 +1,18 @@
-
+/* Particle class.
+ *  Entities: 
+ *      Position - x,y vector with initial random position within the screen dimensions
+ *      PreviousPosition - used for show() method to make the trace more seamless
+ *      Velocity - vx, vy vector influenced by the acceleration entity
+ *      Accelaration - ax, ay vector influenced by the flow field
+ *      MaxSpeed - constraint to defluence the effect of long positive accelaration periods within the perlin space
+ *      Color - each particle has a color set upon instantiation
+ *  Methods:
+ *      updatePreviousPosition() - copies the current position before it's updated
+ *      edges() - ensures each particle stays within the canvas at all times by wrapping edges 
+ *      applyFlowForce() - changes acceleration of the particle based on the flow field vector within its grid cell
+ *      move() - changes the position, velocity and calls edges(). Sets acceleration to 0 after use.
+ *      show() - displays the trace by drawing a line between the current and previous position
+*/
 class Particle {
     constructor(maxSpeed, color) {
         this.position = createVector(random(dimensionWidth), random(dimensionHeight))
@@ -24,9 +38,6 @@ class Particle {
         this.velocity.add(this.acceleration)
         this.position.add(this.velocity)
         this.acceleration.mult(0)
-    }
-    applyForce(force) {
-        this.acceleration.add(force)
     }
     applyFlowForce(flowField, flowFieldResolution, strength) {
         let ix = int(map(this.position.x, 0, dimensionWidth, 0, flowFieldResolution - 1))
@@ -57,29 +68,3 @@ class Particle {
     }
 }
 
-
-
-class Queue {
-    constructor() {
-        this.items = {}
-        this.frontIndex = 0
-        this.backIndex = 0
-    }
-    enqueue(item) {
-        this.items[this.backIndex] = item
-        this.backIndex++
-        return item + ' inserted'
-    }
-    dequeue() {
-        const item = this.items[this.frontIndex]
-        delete this.items[this.frontIndex]
-        this.frontIndex++
-        return item
-    }
-    peek() {
-        return this.items[this.frontIndex]
-    }
-    getQueue() {
-        return Object.values(this.items);
-    }
-}

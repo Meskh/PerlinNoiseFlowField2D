@@ -1,25 +1,39 @@
+/* Add Description in the future
+ * 
 
-const flowFieldResolution = 30
+
+ */
+
+
+
+
 let flowField = [[]]
 let particles = []
 let zOff = 0
-
-const zstep = 0.01
-const numberOfParticles = 5000
-const flowGridResolution = 10
-const flowStrength = 2
-const maxSpeed = 4
-const backgroundColor = [2, 2, 50]
-const particleColor = [255, 255, 255, 5]
-const randomColorScale = [[0, 1], [0, 1], [0, 1]]
-let MainCanvas = null
 let dimensionWidth = 0
 let dimensionHeight = 0
-let recording = false
+
+// play around with these parameters for different results
+const flowFieldResolution = 50      // resolution of grid vectors
+const zstep = 0.01                  // how quick the vectors (direction of particles) change
+const numberOfParticles = 5000      
+const flowGridResolution = 5        // how different the adjacent cell vectors are within the perlin space (recommended 5)
+const flowStrength = 2              // how much the direction of the particle velocity is influenced by the field vector
+const maxSpeed = 4                  // maximum (and usually average) speed of the particles
+const backgroundColor = [2, 2, 50]  // r,g,b 
+const particleColor = [255, 255, 255, 5]  // r,g,b,hue
+/* adds a random factor to the color of each particle. format: [[RedStart, RedEnd], [GreenStart, GreenEnd], [BlueStart, BlueEnd]] 
+ * To keep the original color with no changes, set to [[1, 1], [1, 1], [1, 1]]
+ * Example: 
+ * if set to [[1, 1], [0, 1], [0, 1]], green and blue components of the original color have a chance to be reduced
+ * and hence the particles will be mostly influenced by the red component of the initial color
+*/
+const randomColorScale = [[0, 1], [0, 1], [0, 1]]  
+
 
 function setup() {
-  dimensionWidth = windowWidth//windowWidth//200//7680
-  dimensionHeight = windowHeight//windowHeight//200//4320
+  dimensionWidth = windowWidth
+  dimensionHeight = windowHeight
   MainCanvas = createCanvas(windowWidth, windowHeight);
   //camera(1200, -200, 1500, 0, 0, 0, 0, 1, 0);
   background(backgroundColor);
@@ -31,15 +45,15 @@ function setup() {
 function draw() {
   //background(backgroundColor)
   displayParticles(particles, flowField, flowFieldResolution)
-  
+  //displayFlowField(flowField);
+
   flowField = updateFlowField(zOff, flowGridResolution)
   zOff += zstep
   console.log(frameRate())
-  
-  
-  
+
 }
 
+// return a flow field (2d vector array) based on the z offset (moving through perlin planes)
 function updateFlowField(zOff, resolution) {
   let array = [[]]
   for (let x = 0; x <= flowFieldResolution; x++) {
@@ -51,6 +65,7 @@ function updateFlowField(zOff, resolution) {
   return array
 }
 
+// Show small lines pointing to the direction of the vector in a given cell within a grid
 function displayFlowField(field) {
   for (let x = 0; x < flowFieldResolution; x++) {
     for (let y = 0; y < flowFieldResolution; y++) {
@@ -65,6 +80,7 @@ function displayFlowField(field) {
   }
 }
 
+// create particle objects array (see classes.js for class definition)
 function createParticles(numOfParticles) {
   array = []
   for (let i = 0; i < numOfParticles; i++) {
@@ -74,19 +90,14 @@ function createParticles(numOfParticles) {
   return array
 }
 
+// display and update particles 
 function displayParticles(array, flowField, flowFieldResolution) {
   push()
-  //beginShape()
   for (let particle of array) {
     particle.applyFlowForce(flowField, flowFieldResolution, flowStrength)
     particle.move()
     particle.show()
-    //newVertex = particle.show()
-    fill(50, 50, 50)
-    //vertex(newVertex.x, newVertex.y)
-    
   }
-  //endShape()
   pop()
 }
 
