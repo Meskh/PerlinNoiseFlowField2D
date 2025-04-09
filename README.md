@@ -59,6 +59,7 @@ To run this project:
 
 ## 🐾 Credits
 
-Built using [p5.js](https://p5js.org/)
-Inspired by "The Coding Train" Challenge 24 [The Coding Train](https://www.youtube.com/@TheCodingTrain)
+Built using [p5.js](https://p5js.org/).
+Inspired by "The Coding Train" Challenge 24 [The Coding Train](https://www.youtube.com/@TheCodingTrain).
+Created by Aleksandre Meskhi [LinkedIn](https://www.linkedin.com/in/aleksandre-meskhi/).
 
