@@ -1,13 +1,12 @@
 # 🌬️ 2 Dimensional Flow Field Animation
 
-This is a generative art project built with [p5.js](https://p5js.org/) that simulates particle movement influenced by a 2D flow field. Particles are dropped onto the canvas and follow a vector field generated using Perlin noise. Over time, they trace intricate, flowing paths, resulting in stunning and organic visuals. This project was inspired and heavily influenced by the following "Coding Train" video https://www.youtube.com/watch?v=BjoM9oKOAKY
+This is a generative art project built with [p5.js](https://p5js.org/) that simulates particle movement influenced by a 2D flow field. Particles are dropped onto the canvas and follow a vector field generated using Perlin noise. Over time, they trace intricate, flowing paths, resulting in stunning and organic visuals. This project was inspired and influenced by the following "Coding Train" video https://www.youtube.com/watch?v=BjoM9oKOAKY
 
 ---
 
 ## ✨ Demo
 
 ![flowfield-preview](preview.png)  
-*Add a GIF or screenshot of your output here*
 
 ---
 
@@ -61,5 +60,7 @@ To run this project:
 
 Built using [p5.js](https://p5js.org/).
 Inspired by "The Coding Train" Challenge 24 [The Coding Train](https://www.youtube.com/@TheCodingTrain).
-Created by Aleksandre Meskhi [LinkedIn](https://www.linkedin.com/in/aleksandre-meskhi/).
+Created by Aleksandre Meskhi    
+[LinkedIn](https://www.linkedin.com/in/aleksandre-meskhi/)   
+[Github](https://github.com/Meskh)
 
