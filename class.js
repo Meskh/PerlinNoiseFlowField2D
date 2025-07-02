@@ -1,3 +1,8 @@
+/* Class.js
+ * Developer: Aleksandre Meskhi
+ * Date: July 2024
+ */
+
 /* Particle class.
  *  Entities: 
  *      Position - x,y vector with initial random position within the screen dimensions
@@ -67,4 +72,10 @@ class Particle {
         this.previousPosition = this.position.copy()
     }
 }
+
+/* Class.js
+ * Developer: Aleksandre Meskhi
+ * Date: July 2024
+ */
+
 
