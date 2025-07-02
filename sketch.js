@@ -1,11 +1,7 @@
-/* Add Description in the future
- * 
-
-
+/* Class.js
+ * Developer: Aleksandre Meskhi
+ * Date: July 2024
  */
-
-
-
 
 let flowField = [[]]
 let particles = []
@@ -100,4 +96,9 @@ function displayParticles(array, flowField, flowFieldResolution) {
   }
   pop()
 }
+
+/* Class.js
+ * Developer: Aleksandre Meskhi
+ * Date: July 2024
+ */
 
